@@ -1,0 +1,71 @@
+{
+  "kind": "collectionType",
+  "collectionName": "firstblogs",
+  "info": {
+    "singularName": "firstblog",
+    "pluralName": "firstblogs",
+    "displayName": "FIRSTBLOG"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "date": {
+      "type": "date"
+    },
+    "image": {
+      "type": "media",
+      "multiple": true,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "description": {
+      "type": "blocks"
+    },
+    "author_blogs": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::author-blog.author-blog",
+      "mappedBy": "firstblog"
+    },
+    "categories": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::category.category",
+      "mappedBy": "firstblogs"
+    },
+    "comments": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::comment.comment",
+      "mappedBy": "firstblog"
+    },
+    "contentImages": {
+      "type": "media",
+      "multiple": true,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "addictioncates": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::addictioncate.addictioncate",
+      "mappedBy": "firstblogs"
+    },
+    "tag": {
+      "type": "string"
+    }
+  }
+}

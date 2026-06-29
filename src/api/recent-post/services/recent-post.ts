@@ -1,0 +1,7 @@
+/**
+ * recent-post service
+ */
+
+import { factories } from '@strapi/strapi';
+
+export default factories.createCoreService('api::recent-post.recent-post');

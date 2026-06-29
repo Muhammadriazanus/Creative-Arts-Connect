@@ -1,0 +1,14 @@
+{
+  "kind": "collectionType",
+  "collectionName": "categoresblogs",
+  "info": {
+    "singularName": "categoresblog",
+    "pluralName": "categoresblogs",
+    "displayName": "categoresblog"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {}
+}

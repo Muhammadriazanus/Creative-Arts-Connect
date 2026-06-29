@@ -1,0 +1,30 @@
+{
+  "kind": "collectionType",
+  "collectionName": "author_blogs",
+  "info": {
+    "singularName": "author-blog",
+    "pluralName": "author-blogs",
+    "displayName": "Author-blog"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "authorname": {
+      "type": "string"
+    },
+    "firstblog": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::firstblog.firstblog",
+      "inversedBy": "author_blogs"
+    },
+    "comment": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::comment.comment",
+      "inversedBy": "author_blogs"
+    }
+  }
+}

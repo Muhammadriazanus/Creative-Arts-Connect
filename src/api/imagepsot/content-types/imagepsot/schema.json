@@ -1,0 +1,31 @@
+{
+  "kind": "collectionType",
+  "collectionName": "imagepsots",
+  "info": {
+    "singularName": "imagepsot",
+    "pluralName": "imagepsots",
+    "displayName": "imagepsot"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "date": {
+      "type": "date"
+    },
+    "images": {
+      "type": "media",
+      "multiple": true,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    }
+  }
+}

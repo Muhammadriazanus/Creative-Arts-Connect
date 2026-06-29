@@ -1,0 +1,14 @@
+{
+  "kind": "collectionType",
+  "collectionName": "authorcategories",
+  "info": {
+    "singularName": "authorcategory",
+    "pluralName": "authorcategories",
+    "displayName": "authorcategory"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {}
+}

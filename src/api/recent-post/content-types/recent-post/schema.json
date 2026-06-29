@@ -1,0 +1,18 @@
+{
+  "kind": "collectionType",
+  "collectionName": "recent_posts",
+  "info": {
+    "singularName": "recent-post",
+    "pluralName": "recent-posts",
+    "displayName": "RecentPost"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    }
+  }
+}
