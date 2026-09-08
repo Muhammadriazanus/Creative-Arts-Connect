@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_shared_blog1s",
+  "info": {
+    "displayName": "blog1"
+  },
+  "options": {},
+  "attributes": {
+    "text": {
+      "type": "string"
+    }
+  },
+  "config": {}
+}
