@@ -1,0 +1,48 @@
+{
+  "kind": "collectionType",
+  "collectionName": "lead_magnets",
+  "info": {
+    "singularName": "lead-magnet",
+    "pluralName": "lead-magnets",
+    "displayName": "Lead Magnet"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "slug": {
+      "type": "uid",
+      "targetField": "heading",
+      "required": true
+    },
+    "overline": {
+      "type": "string"
+    },
+    "heading": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "text"
+    },
+    "bullets": {
+      "type": "component",
+      "repeatable": true,
+      "component": "specialty.text-item"
+    },
+    "ctaLabel": {
+      "type": "string"
+    },
+    "cover": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": ["images"]
+    },
+    "guideFile": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": ["files"]
+    }
+  }
+}

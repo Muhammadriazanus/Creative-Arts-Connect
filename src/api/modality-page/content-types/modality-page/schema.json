@@ -1,0 +1,158 @@
+{
+  "kind": "collectionType",
+  "collectionName": "modality_pages",
+  "info": {
+    "singularName": "modality-page",
+    "pluralName": "modality-pages",
+    "displayName": "Modality Page"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "name",
+      "required": true
+    },
+    "icon": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "seoTitle": {
+      "type": "string"
+    },
+    "seoDescription": {
+      "type": "text"
+    },
+    "showHero": {
+      "type": "boolean",
+      "default": true
+    },
+    "heroBreadcrumbs": {
+      "type": "component",
+      "repeatable": true,
+      "component": "specialty.text-item"
+    },
+    "heroHeading": {
+      "type": "string"
+    },
+    "heroDescription": {
+      "type": "text"
+    },
+    "heroCtaLabel": {
+      "type": "string"
+    },
+    "showWhatIs": {
+      "type": "boolean",
+      "default": true
+    },
+    "whatIsHeading": {
+      "type": "string"
+    },
+    "whatIsParagraphs": {
+      "type": "component",
+      "repeatable": true,
+      "component": "specialty.text-item"
+    },
+    "sessionHeading": {
+      "type": "string"
+    },
+    "sessionSteps": {
+      "type": "component",
+      "repeatable": true,
+      "component": "specialty.pillar"
+    },
+    "showBenefits": {
+      "type": "boolean",
+      "default": true
+    },
+    "benefitsHeading": {
+      "type": "string"
+    },
+    "benefits": {
+      "type": "component",
+      "repeatable": true,
+      "component": "specialty.pillar"
+    },
+    "showAudience": {
+      "type": "boolean",
+      "default": true
+    },
+    "audienceHeading": {
+      "type": "string"
+    },
+    "audienceNote": {
+      "type": "string"
+    },
+    "audienceLinks": {
+      "type": "component",
+      "repeatable": true,
+      "component": "specialty.audience-link"
+    },
+    "showFirstSession": {
+      "type": "boolean",
+      "default": true
+    },
+    "firstSessionOverline": {
+      "type": "string"
+    },
+    "firstSessionHeading": {
+      "type": "string"
+    },
+    "firstSessionSteps": {
+      "type": "component",
+      "repeatable": true,
+      "component": "specialty.pillar"
+    },
+    "therapistWidget": {
+      "type": "component",
+      "repeatable": false,
+      "component": "specialty.therapist-widget"
+    },
+    "showLeadMagnet": {
+      "type": "boolean",
+      "default": true
+    },
+    "leadMagnet": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::lead-magnet.lead-magnet"
+    },
+    "showRelatedReading": {
+      "type": "boolean",
+      "default": true
+    },
+    "relatedBlogs": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::firstblog.firstblog"
+    },
+    "showOtherModalities": {
+      "type": "boolean",
+      "default": true
+    },
+    "otherModalities": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::modality-page.modality-page"
+    },
+    "showFaq": {
+      "type": "boolean",
+      "default": true
+    },
+    "faqItems": {
+      "type": "component",
+      "repeatable": true,
+      "component": "specialty.faq-item"
+    }
+  }
+}
