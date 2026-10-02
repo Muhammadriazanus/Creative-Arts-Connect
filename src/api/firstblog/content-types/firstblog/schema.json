@@ -66,6 +66,86 @@
     },
     "tag": {
       "type": "string"
+    },
+    "tags": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::tag.tag",
+      "mappedBy": "firstblogs"
+    },
+    "eyebrow": {
+      "type": "string"
+    },
+    "authorName": {
+      "type": "string"
+    },
+    "authorRole": {
+      "type": "string"
+    },
+    "authorSummary": {
+      "type": "string"
+    },
+    "authorPhoto": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": ["images"]
+    },
+    "profileUrl": {
+      "type": "string"
+    },
+    "authorInstagram": {
+      "type": "string"
+    },
+    "updatedDate": {
+      "type": "date"
+    },
+    "readTime": {
+      "type": "string"
+    },
+    "guideEyebrow": {
+      "type": "string"
+    },
+    "guideTitle": {
+      "type": "string"
+    },
+    "guideSubtitle": {
+      "type": "text"
+    },
+    "guideButtonLabel": {
+      "type": "string"
+    },
+    "guideUrl": {
+      "type": "string"
+    },
+    "guideBullets": {
+      "type": "component",
+      "repeatable": true,
+      "component": "blog.takeaway-item"
+    },
+    "guideCover": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": ["images"]
+    },
+    "showGuide": {
+      "type": "boolean",
+      "default": false
+    },
+    "showKeyTakeaways": {
+      "type": "boolean",
+      "default": false
+    },
+    "key_takeaway": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::key-takeaway.key-takeaway",
+      "mappedBy": "firstblog"
+    },
+    "social_links": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::social-link.social-link",
+      "mappedBy": "firstblog"
     }
   }
 }

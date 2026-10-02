@@ -1,0 +1,36 @@
+{
+  "kind": "collectionType",
+  "collectionName": "social_links",
+  "info": {
+    "singularName": "social-link",
+    "pluralName": "social-links",
+    "displayName": "Social media"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "facebook": {
+      "type": "string"
+    },
+    "linkedin": {
+      "type": "string"
+    },
+    "instagram": {
+      "type": "string"
+    },
+    "tiktok": {
+      "type": "string"
+    },
+    "ownWebsite": {
+      "type": "string"
+    },
+    "firstblog": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::firstblog.firstblog",
+      "inversedBy": "social_links"
+    }
+  }
+}

@@ -1,5 +1,16 @@
 import type { Schema, Struct } from '@strapi/strapi';
 
+export interface BlogTakeawayItem extends Struct.ComponentSchema {
+  collectionName: 'components_blog_takeaway_items';
+  info: {
+    displayName: 'Takeaway item';
+    icon: 'check';
+  };
+  attributes: {
+    text: Schema.Attribute.String;
+  };
+}
+
 export interface SharedBlog1 extends Struct.ComponentSchema {
   collectionName: 'components_shared_blog1s';
   info: {
@@ -72,6 +83,7 @@ export interface SharedSlider extends Struct.ComponentSchema {
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
+      'blog.takeaway-item': BlogTakeawayItem;
       'shared.blog1': SharedBlog1;
       'shared.media': SharedMedia;
       'shared.quote': SharedQuote;

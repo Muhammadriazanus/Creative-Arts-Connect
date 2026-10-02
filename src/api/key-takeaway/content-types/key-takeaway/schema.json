@@ -1,0 +1,26 @@
+{
+  "kind": "collectionType",
+  "collectionName": "key_takeaways",
+  "info": {
+    "singularName": "key-takeaway",
+    "pluralName": "key-takeaways",
+    "displayName": "Key Takeaway"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "items": {
+      "type": "component",
+      "repeatable": true,
+      "component": "blog.takeaway-item"
+    },
+    "firstblog": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::firstblog.firstblog",
+      "inversedBy": "key_takeaway"
+    }
+  }
+}

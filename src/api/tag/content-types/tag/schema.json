@@ -13,6 +13,12 @@
   "attributes": {
     "title": {
       "type": "string"
+    },
+    "firstblogs": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::firstblog.firstblog",
+      "inversedBy": "tags"
     }
   }
 }

@@ -793,6 +793,11 @@ export interface ApiFirstblogFirstblog extends Struct.CollectionTypeSchema {
       'oneToMany',
       'api::author-blog.author-blog'
     >;
+    authorInstagram: Schema.Attribute.String;
+    authorName: Schema.Attribute.String;
+    authorPhoto: Schema.Attribute.Media<'images'>;
+    authorRole: Schema.Attribute.String;
+    authorSummary: Schema.Attribute.String;
     categories: Schema.Attribute.Relation<
       'manyToMany',
       'api::category.category'
@@ -807,9 +812,21 @@ export interface ApiFirstblogFirstblog extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private;
     date: Schema.Attribute.Date;
     description: Schema.Attribute.Blocks;
+    eyebrow: Schema.Attribute.String;
+    guideBullets: Schema.Attribute.Component<'blog.takeaway-item', true>;
+    guideButtonLabel: Schema.Attribute.String;
+    guideCover: Schema.Attribute.Media<'images'>;
+    guideEyebrow: Schema.Attribute.String;
+    guideSubtitle: Schema.Attribute.Text;
+    guideTitle: Schema.Attribute.String;
+    guideUrl: Schema.Attribute.String;
     image: Schema.Attribute.Media<
       'images' | 'files' | 'videos' | 'audios',
       true
+    >;
+    key_takeaway: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::key-takeaway.key-takeaway'
     >;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
@@ -817,12 +834,23 @@ export interface ApiFirstblogFirstblog extends Struct.CollectionTypeSchema {
       'api::firstblog.firstblog'
     > &
       Schema.Attribute.Private;
+    profileUrl: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
+    readTime: Schema.Attribute.String;
+    showGuide: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
+    showKeyTakeaways: Schema.Attribute.Boolean &
+      Schema.Attribute.DefaultTo<false>;
+    social_links: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::social-link.social-link'
+    >;
     tag: Schema.Attribute.String;
+    tags: Schema.Attribute.Relation<'manyToMany', 'api::tag.tag'>;
     title: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    updatedDate: Schema.Attribute.Date;
   };
 }
 
@@ -887,6 +915,38 @@ export interface ApiImagepsotImagepsot extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiKeyTakeawayKeyTakeaway extends Struct.CollectionTypeSchema {
+  collectionName: 'key_takeaways';
+  info: {
+    displayName: 'Key Takeaway';
+    pluralName: 'key-takeaways';
+    singularName: 'key-takeaway';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    firstblog: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::firstblog.firstblog'
+    >;
+    items: Schema.Attribute.Component<'blog.takeaway-item', true>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::key-takeaway.key-takeaway'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiRecentPostRecentPost extends Struct.CollectionTypeSchema {
   collectionName: 'recent_posts';
   info: {
@@ -915,6 +975,42 @@ export interface ApiRecentPostRecentPost extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiSocialLinkSocialLink extends Struct.CollectionTypeSchema {
+  collectionName: 'social_links';
+  info: {
+    displayName: 'Social media';
+    pluralName: 'social-links';
+    singularName: 'social-link';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    facebook: Schema.Attribute.String;
+    firstblog: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::firstblog.firstblog'
+    >;
+    instagram: Schema.Attribute.String;
+    linkedin: Schema.Attribute.String;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::social-link.social-link'
+    > &
+      Schema.Attribute.Private;
+    ownWebsite: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
+    tiktok: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiTagTag extends Struct.CollectionTypeSchema {
   collectionName: 'tags';
   info: {
@@ -929,6 +1025,10 @@ export interface ApiTagTag extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    firstblogs: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::firstblog.firstblog'
+    >;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::tag.tag'> &
       Schema.Attribute.Private;
@@ -1504,7 +1604,9 @@ declare module '@strapi/strapi' {
       'api::firstblog.firstblog': ApiFirstblogFirstblog;
       'api::global.global': ApiGlobalGlobal;
       'api::imagepsot.imagepsot': ApiImagepsotImagepsot;
+      'api::key-takeaway.key-takeaway': ApiKeyTakeawayKeyTakeaway;
       'api::recent-post.recent-post': ApiRecentPostRecentPost;
+      'api::social-link.social-link': ApiSocialLinkSocialLink;
       'api::tag.tag': ApiTagTag;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
