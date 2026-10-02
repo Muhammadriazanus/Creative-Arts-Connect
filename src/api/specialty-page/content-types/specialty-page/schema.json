@@ -1,0 +1,158 @@
+{
+  "kind": "collectionType",
+  "collectionName": "specialty_pages",
+  "info": {
+    "singularName": "specialty-page",
+    "pluralName": "specialty-pages",
+    "displayName": "Specialty Page"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "slug": {
+      "type": "uid",
+      "required": true
+    },
+    "seoTitle": {
+      "type": "string"
+    },
+    "seoDescription": {
+      "type": "text"
+    },
+    "primaryKeyword": {
+      "type": "string"
+    },
+    "secondaryKeywords": {
+      "type": "text"
+    },
+    "showHero": {
+      "type": "boolean",
+      "default": true
+    },
+    "heroBreadcrumbs": {
+      "type": "component",
+      "repeatable": true,
+      "component": "specialty.text-item"
+    },
+    "heroHeading": {
+      "type": "string"
+    },
+    "heroDescription": {
+      "type": "text"
+    },
+    "heroCtaLabel": {
+      "type": "string"
+    },
+    "heroTrustLine": {
+      "type": "string"
+    },
+    "heroPhoto": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "showProblem": {
+      "type": "boolean",
+      "default": true
+    },
+    "problemHeading": {
+      "type": "string"
+    },
+    "problemDescription": {
+      "type": "text"
+    },
+    "feelings": {
+      "type": "component",
+      "repeatable": true,
+      "component": "specialty.text-item"
+    },
+    "showHelps": {
+      "type": "boolean",
+      "default": true
+    },
+    "helpsHeading": {
+      "type": "string"
+    },
+    "helpsDescription": {
+      "type": "text"
+    },
+    "helpsPillars": {
+      "type": "component",
+      "repeatable": true,
+      "component": "specialty.pillar"
+    },
+    "helpsPhoto": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "showModalities": {
+      "type": "boolean",
+      "default": true
+    },
+    "modalitiesHeading": {
+      "type": "string"
+    },
+    "modalities": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::modality-page.modality-page"
+    },
+    "modalitiesNote": {
+      "type": "text"
+    },
+    "showAudience": {
+      "type": "boolean",
+      "default": true
+    },
+    "audienceHeading": {
+      "type": "string"
+    },
+    "audiences": {
+      "type": "component",
+      "repeatable": true,
+      "component": "specialty.text-item"
+    },
+    "audienceNote": {
+      "type": "string"
+    },
+    "therapistWidget": {
+      "type": "component",
+      "repeatable": false,
+      "component": "specialty.therapist-widget"
+    },
+    "showRelatedReading": {
+      "type": "boolean",
+      "default": true
+    },
+    "relatedBlogs": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::firstblog.firstblog"
+    },
+    "showFaq": {
+      "type": "boolean",
+      "default": true
+    },
+    "faqItems": {
+      "type": "component",
+      "repeatable": true,
+      "component": "specialty.faq-item"
+    },
+    "showLeadMagnet": {
+      "type": "boolean",
+      "default": true
+    },
+    "leadMagnet": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::lead-magnet.lead-magnet"
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "collectionName": "components_specialty_audience_links",
+  "info": {
+    "displayName": "Audience Link",
+    "icon": "link",
+    "description": "A chip with a label that links to a specialty page"
+  },
+  "options": {},
+  "attributes": {
+    "label": {
+      "type": "string",
+      "required": true
+    },
+    "page": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::specialty-page.specialty-page"
+    }
+  }
+}

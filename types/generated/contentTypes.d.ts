@@ -915,35 +915,116 @@ export interface ApiImagepsotImagepsot extends Struct.CollectionTypeSchema {
   };
 }
 
-export interface ApiKeyTakeawayKeyTakeaway extends Struct.CollectionTypeSchema {
-  collectionName: 'key_takeaways';
+export interface ApiLeadMagnetLeadMagnet extends Struct.CollectionTypeSchema {
+  collectionName: 'lead_magnets';
   info: {
-    displayName: 'Key Takeaway';
-    pluralName: 'key-takeaways';
-    singularName: 'key-takeaway';
+    displayName: 'Lead Magnet';
+    pluralName: 'lead-magnets';
+    singularName: 'lead-magnet';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
+    bullets: Schema.Attribute.Component<'specialty.text-item', true>;
+    cover: Schema.Attribute.Media<'images'>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    firstblog: Schema.Attribute.Relation<
-      'oneToOne',
-      'api::firstblog.firstblog'
-    >;
-    items: Schema.Attribute.Component<'blog.takeaway-item', true>;
+    ctaLabel: Schema.Attribute.String;
+    description: Schema.Attribute.Text;
+    guideFile: Schema.Attribute.Media<'files'>;
+    heading: Schema.Attribute.String & Schema.Attribute.Required;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
-      'api::key-takeaway.key-takeaway'
+      'api::lead-magnet.lead-magnet'
     > &
       Schema.Attribute.Private;
+    overline: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
+    slug: Schema.Attribute.UID<'heading'> & Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+  };
+}
+
+export interface ApiModalityPageModalityPage
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'modality_pages';
+  info: {
+    displayName: 'Modality Page';
+    pluralName: 'modality-pages';
+    singularName: 'modality-page';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    audienceHeading: Schema.Attribute.String;
+    audienceLinks: Schema.Attribute.Component<'specialty.audience-link', true>;
+    audienceNote: Schema.Attribute.String;
+    benefits: Schema.Attribute.Component<'specialty.pillar', true>;
+    benefitsHeading: Schema.Attribute.String;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    faqItems: Schema.Attribute.Component<'specialty.faq-item', true>;
+    firstSessionHeading: Schema.Attribute.String;
+    firstSessionOverline: Schema.Attribute.String;
+    firstSessionSteps: Schema.Attribute.Component<'specialty.pillar', true>;
+    heroBreadcrumbs: Schema.Attribute.Component<'specialty.text-item', true>;
+    heroCtaLabel: Schema.Attribute.String;
+    heroDescription: Schema.Attribute.Text;
+    heroHeading: Schema.Attribute.String;
+    icon: Schema.Attribute.Media<'images'>;
+    leadMagnet: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::lead-magnet.lead-magnet'
+    >;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::modality-page.modality-page'
+    > &
+      Schema.Attribute.Private;
+    name: Schema.Attribute.String & Schema.Attribute.Required;
+    otherModalities: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::modality-page.modality-page'
+    >;
+    publishedAt: Schema.Attribute.DateTime;
+    relatedBlogs: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::firstblog.firstblog'
+    >;
+    seoDescription: Schema.Attribute.Text;
+    seoTitle: Schema.Attribute.String;
+    sessionHeading: Schema.Attribute.String;
+    sessionSteps: Schema.Attribute.Component<'specialty.pillar', true>;
+    showAudience: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>;
+    showBenefits: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>;
+    showFaq: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>;
+    showFirstSession: Schema.Attribute.Boolean &
+      Schema.Attribute.DefaultTo<true>;
+    showHero: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>;
+    showLeadMagnet: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>;
+    showOtherModalities: Schema.Attribute.Boolean &
+      Schema.Attribute.DefaultTo<true>;
+    showRelatedReading: Schema.Attribute.Boolean &
+      Schema.Attribute.DefaultTo<true>;
+    showWhatIs: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>;
+    slug: Schema.Attribute.UID<'name'> & Schema.Attribute.Required;
+    therapistWidget: Schema.Attribute.Component<
+      'specialty.therapist-widget',
+      false
+    >;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    whatIsHeading: Schema.Attribute.String;
+    whatIsParagraphs: Schema.Attribute.Component<'specialty.text-item', true>;
   };
 }
 
@@ -975,36 +1056,77 @@ export interface ApiRecentPostRecentPost extends Struct.CollectionTypeSchema {
   };
 }
 
-export interface ApiSocialLinkSocialLink extends Struct.CollectionTypeSchema {
-  collectionName: 'social_links';
+export interface ApiSpecialtyPageSpecialtyPage
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'specialty_pages';
   info: {
-    displayName: 'Social media';
-    pluralName: 'social-links';
-    singularName: 'social-link';
+    displayName: 'Specialty Page';
+    pluralName: 'specialty-pages';
+    singularName: 'specialty-page';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
+    audienceHeading: Schema.Attribute.String;
+    audienceNote: Schema.Attribute.String;
+    audiences: Schema.Attribute.Component<'specialty.text-item', true>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    facebook: Schema.Attribute.String;
-    firstblog: Schema.Attribute.Relation<
+    faqItems: Schema.Attribute.Component<'specialty.faq-item', true>;
+    feelings: Schema.Attribute.Component<'specialty.text-item', true>;
+    helpsDescription: Schema.Attribute.Text;
+    helpsHeading: Schema.Attribute.String;
+    helpsPhoto: Schema.Attribute.Media<'images'>;
+    helpsPillars: Schema.Attribute.Component<'specialty.pillar', true>;
+    heroBreadcrumbs: Schema.Attribute.Component<'specialty.text-item', true>;
+    heroCtaLabel: Schema.Attribute.String;
+    heroDescription: Schema.Attribute.Text;
+    heroHeading: Schema.Attribute.String;
+    heroPhoto: Schema.Attribute.Media<'images'>;
+    heroTrustLine: Schema.Attribute.String;
+    leadMagnet: Schema.Attribute.Relation<
       'manyToOne',
-      'api::firstblog.firstblog'
+      'api::lead-magnet.lead-magnet'
     >;
-    instagram: Schema.Attribute.String;
-    linkedin: Schema.Attribute.String;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
-      'api::social-link.social-link'
+      'api::specialty-page.specialty-page'
     > &
       Schema.Attribute.Private;
-    ownWebsite: Schema.Attribute.String;
+    modalities: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::modality-page.modality-page'
+    >;
+    modalitiesHeading: Schema.Attribute.String;
+    modalitiesNote: Schema.Attribute.Text;
+    primaryKeyword: Schema.Attribute.String;
+    problemDescription: Schema.Attribute.Text;
+    problemHeading: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
-    tiktok: Schema.Attribute.String;
+    relatedBlogs: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::firstblog.firstblog'
+    >;
+    secondaryKeywords: Schema.Attribute.Text;
+    seoDescription: Schema.Attribute.Text;
+    seoTitle: Schema.Attribute.String;
+    showAudience: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>;
+    showFaq: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>;
+    showHelps: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>;
+    showHero: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>;
+    showLeadMagnet: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>;
+    showModalities: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>;
+    showProblem: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>;
+    showRelatedReading: Schema.Attribute.Boolean &
+      Schema.Attribute.DefaultTo<true>;
+    slug: Schema.Attribute.UID & Schema.Attribute.Required;
+    therapistWidget: Schema.Attribute.Component<
+      'specialty.therapist-widget',
+      false
+    >;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1604,9 +1726,10 @@ declare module '@strapi/strapi' {
       'api::firstblog.firstblog': ApiFirstblogFirstblog;
       'api::global.global': ApiGlobalGlobal;
       'api::imagepsot.imagepsot': ApiImagepsotImagepsot;
-      'api::key-takeaway.key-takeaway': ApiKeyTakeawayKeyTakeaway;
+      'api::lead-magnet.lead-magnet': ApiLeadMagnetLeadMagnet;
+      'api::modality-page.modality-page': ApiModalityPageModalityPage;
       'api::recent-post.recent-post': ApiRecentPostRecentPost;
-      'api::social-link.social-link': ApiSocialLinkSocialLink;
+      'api::specialty-page.specialty-page': ApiSpecialtyPageSpecialtyPage;
       'api::tag.tag': ApiTagTag;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
