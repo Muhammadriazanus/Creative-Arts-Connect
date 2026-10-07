@@ -950,6 +950,7 @@ export interface ApiModalityPageModalityPage
     heroCtaLabel: Schema.Attribute.String;
     heroDescription: Schema.Attribute.Text;
     heroHeading: Schema.Attribute.String;
+    heroPhoto: Schema.Attribute.Media<'images'>;
     icon: Schema.Attribute.Media<'images'>;
     leadMagnet: Schema.Attribute.Relation<
       'manyToOne',
