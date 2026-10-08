@@ -51,6 +51,13 @@
     "heroCtaLabel": {
       "type": "string"
     },
+    "heroPhoto": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
     "showWhatIs": {
       "type": "boolean",
       "default": true
