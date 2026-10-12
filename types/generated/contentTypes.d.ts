@@ -1010,6 +1010,7 @@ export interface ApiModalityPageModalityPage
     heroCtaLabel: Schema.Attribute.String;
     heroDescription: Schema.Attribute.Text;
     heroHeading: Schema.Attribute.String;
+    heroPhoto: Schema.Attribute.Media<'images'>;
     icon: Schema.Attribute.Media<'images'>;
     leadMagnet: Schema.Attribute.Relation<
       'manyToOne',
@@ -1224,6 +1225,39 @@ export interface ApiTagTag extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
     title: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiTestimonialTestimonial extends Struct.CollectionTypeSchema {
+  collectionName: 'testimonials';
+  info: {
+    displayName: 'Testimonial';
+    pluralName: 'testimonials';
+    singularName: 'testimonial';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    authorName: Schema.Attribute.String & Schema.Attribute.Required;
+    authorRole: Schema.Attribute.String;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::testimonial.testimonial'
+    > &
+      Schema.Attribute.Private;
+    location: Schema.Attribute.String;
+    order: Schema.Attribute.Integer & Schema.Attribute.DefaultTo<0>;
+    organization: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
+    quote: Schema.Attribute.Text & Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1801,6 +1835,7 @@ declare module '@strapi/strapi' {
       'api::social-link.social-link': ApiSocialLinkSocialLink;
       'api::specialty-page.specialty-page': ApiSpecialtyPageSpecialtyPage;
       'api::tag.tag': ApiTagTag;
+      'api::testimonial.testimonial': ApiTestimonialTestimonial;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;
