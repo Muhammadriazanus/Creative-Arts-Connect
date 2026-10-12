@@ -774,6 +774,137 @@ export interface ApiCommentComment extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiEventEvent extends Struct.CollectionTypeSchema {
+  collectionName: 'events';
+  info: {
+    displayName: 'Event';
+    pluralName: 'events';
+    singularName: 'event';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    audience: Schema.Attribute.Enumeration<
+      ['Parents', 'Adults', 'Therapists', 'General Education']
+    >;
+    category: Schema.Attribute.Enumeration<
+      ['conference', 'workshop', 'webinar']
+    > &
+      Schema.Attribute.Required;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    durationMinutes: Schema.Attribute.Integer &
+      Schema.Attribute.SetMinMax<
+        {
+          min: 1;
+        },
+        number
+      >;
+    endDate: Schema.Attribute.DateTime;
+    hostName: Schema.Attribute.String;
+    hostPhoto: Schema.Attribute.Media<'images'>;
+    image: Schema.Attribute.Media<'images'>;
+    isFeatured: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::event.event'> &
+      Schema.Attribute.Private;
+    locationText: Schema.Attribute.String;
+    locationType: Schema.Attribute.Enumeration<['virtual', 'in-person']> &
+      Schema.Attribute.DefaultTo<'virtual'>;
+    priceLabel: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
+    recordingUrl: Schema.Attribute.String;
+    registerUrl: Schema.Attribute.String;
+    shortDescription: Schema.Attribute.Text;
+    slug: Schema.Attribute.UID<'title'> & Schema.Attribute.Required;
+    startDate: Schema.Attribute.DateTime & Schema.Attribute.Required;
+    timezone: Schema.Attribute.Enumeration<
+      [
+        'EST',
+        'EDT',
+        'ET',
+        'CST',
+        'CDT',
+        'CT',
+        'MST',
+        'MDT',
+        'MT',
+        'PST',
+        'PDT',
+        'PT',
+        'GMT',
+        'UTC',
+        'BST',
+        'CET',
+        'CEST',
+        'IST',
+        'PKT',
+        'SGT',
+      ]
+    > &
+      Schema.Attribute.DefaultTo<'EST'>;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiEventsPageEventsPage extends Struct.SingleTypeSchema {
+  collectionName: 'events_pages';
+  info: {
+    displayName: 'Events Page';
+    pluralName: 'events-pages';
+    singularName: 'events-page';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    errorMessage: Schema.Attribute.String;
+    featuredBadge: Schema.Attribute.String;
+    featuredCtaLabel: Schema.Attribute.String;
+    heroDescription: Schema.Attribute.String;
+    heroHeading: Schema.Attribute.String;
+    hostCtaLabel: Schema.Attribute.String;
+    hostCtaUrl: Schema.Attribute.String;
+    hostDescription: Schema.Attribute.String;
+    hostEyebrow: Schema.Attribute.String;
+    hostHeading: Schema.Attribute.String;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::events-page.events-page'
+    > &
+      Schema.Attribute.Private;
+    newsletterButton: Schema.Attribute.String;
+    newsletterDescription: Schema.Attribute.String;
+    newsletterHeading: Schema.Attribute.String;
+    newsletterPlaceholder: Schema.Attribute.String;
+    newsletterSending: Schema.Attribute.String;
+    newsletterSuccess: Schema.Attribute.String;
+    noUpcomingMessage: Schema.Attribute.String;
+    pastHeading: Schema.Attribute.String;
+    pastSubheading: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
+    registerLabel: Schema.Attribute.String;
+    tabAll: Schema.Attribute.String;
+    tabConferences: Schema.Attribute.String;
+    tabWebinars: Schema.Attribute.String;
+    tabWorkshops: Schema.Attribute.String;
+    upcomingHeading: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    watchRecordingLabel: Schema.Attribute.String;
+  };
+}
+
 export interface ApiFirstblogFirstblog extends Struct.CollectionTypeSchema {
   collectionName: 'firstblogs';
   info: {
@@ -1161,6 +1292,61 @@ export interface ApiTestimonialTestimonial extends Struct.CollectionTypeSchema {
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+  };
+}
+
+export interface ApiWebinarsPageWebinarsPage extends Struct.SingleTypeSchema {
+  collectionName: 'webinars_pages';
+  info: {
+    displayName: 'Webinars Page';
+    pluralName: 'webinars-pages';
+    singularName: 'webinars-page';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    durationSuffix: Schema.Attribute.String;
+    emailLabel: Schema.Attribute.String;
+    emailPlaceholder: Schema.Attribute.String;
+    errorMessage: Schema.Attribute.String;
+    filterAdults: Schema.Attribute.String;
+    filterAll: Schema.Attribute.String;
+    filterGeneral: Schema.Attribute.String;
+    filterParents: Schema.Attribute.String;
+    filterTherapists: Schema.Attribute.String;
+    heroDescription: Schema.Attribute.String;
+    heroHeading: Schema.Attribute.String;
+    hostPrefix: Schema.Attribute.String;
+    libraryHeading: Schema.Attribute.String;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::webinars-page.webinars-page'
+    > &
+      Schema.Attribute.Private;
+    moreUpcomingHeading: Schema.Attribute.String;
+    nameLabel: Schema.Attribute.String;
+    namePlaceholder: Schema.Attribute.String;
+    nextBadge: Schema.Attribute.String;
+    nextCtaLabel: Schema.Attribute.String;
+    noRecordingsMessage: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
+    registerLabel: Schema.Attribute.String;
+    sendingLabel: Schema.Attribute.String;
+    submitLabel: Schema.Attribute.String;
+    successMessage: Schema.Attribute.String;
+    suggestDescription: Schema.Attribute.String;
+    suggestHeading: Schema.Attribute.String;
+    topicLabel: Schema.Attribute.String;
+    topicPlaceholder: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    watchNowLabel: Schema.Attribute.String;
   };
 }
 
@@ -1725,6 +1911,8 @@ declare module '@strapi/strapi' {
       'api::categoresblog.categoresblog': ApiCategoresblogCategoresblog;
       'api::category.category': ApiCategoryCategory;
       'api::comment.comment': ApiCommentComment;
+      'api::event.event': ApiEventEvent;
+      'api::events-page.events-page': ApiEventsPageEventsPage;
       'api::firstblog.firstblog': ApiFirstblogFirstblog;
       'api::global.global': ApiGlobalGlobal;
       'api::imagepsot.imagepsot': ApiImagepsotImagepsot;
@@ -1734,6 +1922,7 @@ declare module '@strapi/strapi' {
       'api::specialty-page.specialty-page': ApiSpecialtyPageSpecialtyPage;
       'api::tag.tag': ApiTagTag;
       'api::testimonial.testimonial': ApiTestimonialTestimonial;
+      'api::webinars-page.webinars-page': ApiWebinarsPageWebinarsPage;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;

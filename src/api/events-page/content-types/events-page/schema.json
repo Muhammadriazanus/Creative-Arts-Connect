@@ -1,0 +1,93 @@
+{
+  "kind": "singleType",
+  "collectionName": "events_pages",
+  "info": {
+    "singularName": "events-page",
+    "pluralName": "events-pages",
+    "displayName": "Events Page"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "heroHeading": {
+      "type": "string"
+    },
+    "heroDescription": {
+      "type": "string"
+    },
+    "featuredBadge": {
+      "type": "string"
+    },
+    "featuredCtaLabel": {
+      "type": "string"
+    },
+    "tabAll": {
+      "type": "string"
+    },
+    "tabConferences": {
+      "type": "string"
+    },
+    "tabWorkshops": {
+      "type": "string"
+    },
+    "tabWebinars": {
+      "type": "string"
+    },
+    "upcomingHeading": {
+      "type": "string"
+    },
+    "noUpcomingMessage": {
+      "type": "string"
+    },
+    "registerLabel": {
+      "type": "string"
+    },
+    "pastHeading": {
+      "type": "string"
+    },
+    "pastSubheading": {
+      "type": "string"
+    },
+    "watchRecordingLabel": {
+      "type": "string"
+    },
+    "newsletterHeading": {
+      "type": "string"
+    },
+    "newsletterDescription": {
+      "type": "string"
+    },
+    "newsletterPlaceholder": {
+      "type": "string"
+    },
+    "newsletterButton": {
+      "type": "string"
+    },
+    "newsletterSending": {
+      "type": "string"
+    },
+    "newsletterSuccess": {
+      "type": "string"
+    },
+    "hostEyebrow": {
+      "type": "string"
+    },
+    "hostHeading": {
+      "type": "string"
+    },
+    "hostDescription": {
+      "type": "string"
+    },
+    "hostCtaLabel": {
+      "type": "string"
+    },
+    "hostCtaUrl": {
+      "type": "string"
+    },
+    "errorMessage": {
+      "type": "string"
+    }
+  }
+}

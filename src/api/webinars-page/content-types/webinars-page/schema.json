@@ -1,0 +1,99 @@
+{
+  "kind": "singleType",
+  "collectionName": "webinars_pages",
+  "info": {
+    "singularName": "webinars-page",
+    "pluralName": "webinars-pages",
+    "displayName": "Webinars Page"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "heroHeading": {
+      "type": "string"
+    },
+    "heroDescription": {
+      "type": "string"
+    },
+    "nextBadge": {
+      "type": "string"
+    },
+    "nextCtaLabel": {
+      "type": "string"
+    },
+    "hostPrefix": {
+      "type": "string"
+    },
+    "moreUpcomingHeading": {
+      "type": "string"
+    },
+    "registerLabel": {
+      "type": "string"
+    },
+    "libraryHeading": {
+      "type": "string"
+    },
+    "filterAll": {
+      "type": "string"
+    },
+    "filterParents": {
+      "type": "string"
+    },
+    "filterAdults": {
+      "type": "string"
+    },
+    "filterTherapists": {
+      "type": "string"
+    },
+    "filterGeneral": {
+      "type": "string"
+    },
+    "durationSuffix": {
+      "type": "string"
+    },
+    "watchNowLabel": {
+      "type": "string"
+    },
+    "noRecordingsMessage": {
+      "type": "string"
+    },
+    "suggestHeading": {
+      "type": "string"
+    },
+    "suggestDescription": {
+      "type": "string"
+    },
+    "nameLabel": {
+      "type": "string"
+    },
+    "namePlaceholder": {
+      "type": "string"
+    },
+    "emailLabel": {
+      "type": "string"
+    },
+    "emailPlaceholder": {
+      "type": "string"
+    },
+    "topicLabel": {
+      "type": "string"
+    },
+    "topicPlaceholder": {
+      "type": "string"
+    },
+    "submitLabel": {
+      "type": "string"
+    },
+    "sendingLabel": {
+      "type": "string"
+    },
+    "successMessage": {
+      "type": "string"
+    },
+    "errorMessage": {
+      "type": "string"
+    }
+  }
+}
