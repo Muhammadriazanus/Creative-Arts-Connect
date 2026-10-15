@@ -1,4 +1,5 @@
 import type { Core } from '@strapi/strapi';
+import type { Knex } from 'knex';
 
 const MODALITY_UID = 'api::modality-page.modality-page';
 const TABLE = 'modality_pages';
@@ -9,8 +10,13 @@ const LINK_TABLE = 'modality_pages_other_modalities_lnk';
 // After any modality publish, rebuild every published page's links from its
 // draft's links. Written straight to the link table because document-service
 // updates would recreate the published rows again.
+// Runs on the publish's own transaction: on SQLite the pool has a single
+// connection, so querying outside it deadlocks until the acquire timeout.
 async function resyncOtherModalities(strapi: Core.Strapi) {
-  const knex = strapi.db.connection;
+  await strapi.db.transaction(({ trx }) => resync(trx));
+}
+
+async function resync(knex: Knex.Transaction) {
   const rows: { id: number; document_id: string; published_at: unknown }[] = await knex(TABLE).select(
     'id',
     'document_id',
