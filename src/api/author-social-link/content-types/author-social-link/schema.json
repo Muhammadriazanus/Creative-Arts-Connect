@@ -1,0 +1,36 @@
+{
+  "kind": "collectionType",
+  "collectionName": "author_social_links",
+  "info": {
+    "singularName": "author-social-link",
+    "pluralName": "author-social-links",
+    "displayName": "Author Social Link"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "facebook": {
+      "type": "string"
+    },
+    "linkedin": {
+      "type": "string"
+    },
+    "instagram": {
+      "type": "string"
+    },
+    "tiktok": {
+      "type": "string"
+    },
+    "ownWebsite": {
+      "type": "string"
+    },
+    "blogPost": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::blog-post.blog-post",
+      "inversedBy": "authorSocialLinks"
+    }
+  }
+}

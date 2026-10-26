@@ -1,0 +1,164 @@
+{
+  "kind": "collectionType",
+  "collectionName": "blog_posts",
+  "info": {
+    "singularName": "blog-post",
+    "pluralName": "blog-posts",
+    "displayName": "Blog Post"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "title"
+    },
+    "date": {
+      "type": "date"
+    },
+    "image": {
+      "type": "media",
+      "multiple": true,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "description": {
+      "type": "blocks"
+    },
+    "blogAuthors": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::blog-author.blog-author",
+      "mappedBy": "blogPost"
+    },
+    "categories": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::category.category",
+      "mappedBy": "blogPosts"
+    },
+    "comments": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::comment.comment",
+      "mappedBy": "blogPost"
+    },
+    "contentImages": {
+      "type": "media",
+      "multiple": true,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "blogCategories": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::blog-category.blog-category",
+      "mappedBy": "blogPosts"
+    },
+    "tag": {
+      "type": "string"
+    },
+    "tags": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::tag.tag",
+      "mappedBy": "blogPosts"
+    },
+    "eyebrow": {
+      "type": "string"
+    },
+    "authorName": {
+      "type": "string"
+    },
+    "authorRole": {
+      "type": "string"
+    },
+    "authorSummary": {
+      "type": "string"
+    },
+    "authorPhoto": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "profileUrl": {
+      "type": "string"
+    },
+    "authorInstagram": {
+      "type": "string"
+    },
+    "updatedDate": {
+      "type": "date"
+    },
+    "readTime": {
+      "type": "string"
+    },
+    "guideEyebrow": {
+      "type": "string"
+    },
+    "guideTitle": {
+      "type": "string"
+    },
+    "guideSubtitle": {
+      "type": "text"
+    },
+    "guideButtonLabel": {
+      "type": "string"
+    },
+    "guideUrl": {
+      "type": "string"
+    },
+    "guideBullets": {
+      "type": "component",
+      "repeatable": true,
+      "component": "blog.takeaway-item"
+    },
+    "guideCover": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "showGuide": {
+      "type": "boolean",
+      "default": false
+    },
+    "showKeyTakeaways": {
+      "type": "boolean",
+      "default": false
+    },
+    "keyTakeaway": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::key-takeaway.key-takeaway",
+      "mappedBy": "blogPost"
+    },
+    "authorSocialLinks": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::author-social-link.author-social-link",
+      "mappedBy": "blogPost"
+    },
+    "seo": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.seo"
+    }
+  }
+}

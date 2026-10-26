@@ -4,7 +4,7 @@
   "info": {
     "singularName": "comment",
     "pluralName": "comments",
-    "displayName": "comment"
+    "displayName": "Comment"
   },
   "options": {
     "draftAndPublish": true
@@ -14,25 +14,25 @@
     "comment": {
       "type": "string"
     },
-    "author_blogs": {
+    "blogAuthors": {
       "type": "relation",
       "relation": "oneToMany",
-      "target": "api::author-blog.author-blog",
+      "target": "api::blog-author.blog-author",
       "mappedBy": "comment"
     },
-    "firstblog": {
+    "blogPost": {
       "type": "relation",
       "relation": "manyToOne",
-      "target": "api::firstblog.firstblog",
+      "target": "api::blog-post.blog-post",
       "inversedBy": "comments"
     },
-    "FirstName": {
+    "firstName": {
       "type": "string"
     },
-    "Email": {
+    "email": {
       "type": "email"
     },
-    "WebSiteUrl": {
+    "websiteUrl": {
       "type": "string"
     }
   }
