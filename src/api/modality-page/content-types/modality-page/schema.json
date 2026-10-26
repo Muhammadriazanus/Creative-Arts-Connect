@@ -27,12 +27,6 @@
         "images"
       ]
     },
-    "seoTitle": {
-      "type": "string"
-    },
-    "seoDescription": {
-      "type": "text"
-    },
     "showHero": {
       "type": "boolean",
       "default": true
@@ -141,7 +135,7 @@
     "relatedBlogs": {
       "type": "relation",
       "relation": "manyToMany",
-      "target": "api::firstblog.firstblog"
+      "target": "api::blog-post.blog-post"
     },
     "showOtherModalities": {
       "type": "boolean",
@@ -160,6 +154,11 @@
       "type": "component",
       "repeatable": true,
       "component": "specialty.faq-item"
+    },
+    "seo": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.seo"
     }
   }
 }

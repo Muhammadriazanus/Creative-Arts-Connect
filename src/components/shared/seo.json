@@ -1,11 +1,40 @@
 {
   "collectionName": "components_shared_seos",
   "info": {
-    "name": "Seo",
-    "icon": "allergies",
-    "displayName": "Seo",
-    "description": ""
+    "displayName": "SEO",
+    "icon": "search",
+    "description": "Search engine and social sharing metadata for a page"
   },
   "options": {},
-  "attributes": {}
+  "attributes": {
+    "metaTitle": {
+      "type": "string"
+    },
+    "metaDescription": {
+      "type": "text"
+    },
+    "keywords": {
+      "type": "text"
+    },
+    "metaImage": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "canonicalURL": {
+      "type": "string"
+    },
+    "metaRobots": {
+      "type": "string"
+    },
+    "preventIndexing": {
+      "type": "boolean",
+      "default": false
+    },
+    "structuredData": {
+      "type": "json"
+    }
+  }
 }

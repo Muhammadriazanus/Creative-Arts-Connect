@@ -15,18 +15,6 @@
       "type": "uid",
       "required": true
     },
-    "seoTitle": {
-      "type": "string"
-    },
-    "seoDescription": {
-      "type": "text"
-    },
-    "primaryKeyword": {
-      "type": "string"
-    },
-    "secondaryKeywords": {
-      "type": "text"
-    },
     "showHero": {
       "type": "boolean",
       "default": true
@@ -134,7 +122,7 @@
     "relatedBlogs": {
       "type": "relation",
       "relation": "manyToMany",
-      "target": "api::firstblog.firstblog"
+      "target": "api::blog-post.blog-post"
     },
     "showFaq": {
       "type": "boolean",
@@ -153,6 +141,11 @@
       "type": "relation",
       "relation": "manyToOne",
       "target": "api::lead-magnet.lead-magnet"
+    },
+    "seo": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.seo"
     }
   }
 }
