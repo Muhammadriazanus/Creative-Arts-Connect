@@ -23,6 +23,9 @@
     "featuredCtaLabel": {
       "type": "string"
     },
+    "viewBrochureLabel": {
+      "type": "string"
+    },
     "tabAll": {
       "type": "string"
     },
@@ -88,11 +91,6 @@
     },
     "errorMessage": {
       "type": "string"
-    },
-    "seo": {
-      "type": "component",
-      "repeatable": false,
-      "component": "shared.seo"
     }
   }
 }
