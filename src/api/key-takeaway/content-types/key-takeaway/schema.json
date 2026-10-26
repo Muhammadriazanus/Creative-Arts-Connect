@@ -16,11 +16,11 @@
       "repeatable": true,
       "component": "blog.takeaway-item"
     },
-    "firstblog": {
+    "blogPost": {
       "type": "relation",
       "relation": "oneToOne",
-      "target": "api::firstblog.firstblog",
-      "inversedBy": "key_takeaway"
+      "target": "api::blog-post.blog-post",
+      "inversedBy": "keyTakeaway"
     }
   }
 }

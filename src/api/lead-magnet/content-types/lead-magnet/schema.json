@@ -37,12 +37,21 @@
     "cover": {
       "type": "media",
       "multiple": false,
-      "allowedTypes": ["images"]
+      "allowedTypes": [
+        "images"
+      ]
     },
     "guideFile": {
       "type": "media",
       "multiple": false,
-      "allowedTypes": ["files"]
+      "allowedTypes": [
+        "files"
+      ]
+    },
+    "seo": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.seo"
     }
   }
 }

@@ -9,11 +9,11 @@
     "deploy": "strapi deploy",
     "dev": "strapi develop",
     "develop": "strapi develop",
-    "seed:example": "node ./scripts/seed.js",
     "start": "strapi start",
     "strapi": "strapi",
     "upgrade": "npx @strapi/upgrade latest",
     "upgrade:dry": "npx @strapi/upgrade latest --dry",
+    "migrate:transform-export": "node ./scripts/transform-export.js",
     "migrate:uploads-s3": "node ./scripts/migrate-uploads-to-s3.js"
   },
   "dependencies": {
