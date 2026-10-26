@@ -715,6 +715,8 @@ export interface ApiEventEvent extends Struct.CollectionTypeSchema {
     audience: Schema.Attribute.Enumeration<
       ['Parents', 'Adults', 'Therapists', 'General Education']
     >;
+    brochure: Schema.Attribute.Media<'images' | 'files'>;
+    brochureTitle: Schema.Attribute.String;
     category: Schema.Attribute.Enumeration<
       ['conference', 'workshop', 'webinar']
     > &
@@ -744,7 +746,6 @@ export interface ApiEventEvent extends Struct.CollectionTypeSchema {
     publishedAt: Schema.Attribute.DateTime;
     recordingUrl: Schema.Attribute.String;
     registerUrl: Schema.Attribute.String;
-    seo: Schema.Attribute.Component<'shared.seo', false>;
     shortDescription: Schema.Attribute.Text;
     slug: Schema.Attribute.UID<'title'> & Schema.Attribute.Required;
     startDate: Schema.Attribute.DateTime & Schema.Attribute.Required;
@@ -821,7 +822,6 @@ export interface ApiEventsPageEventsPage extends Struct.SingleTypeSchema {
     pastSubheading: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
     registerLabel: Schema.Attribute.String;
-    seo: Schema.Attribute.Component<'shared.seo', false>;
     tabAll: Schema.Attribute.String;
     tabConferences: Schema.Attribute.String;
     tabWebinars: Schema.Attribute.String;
@@ -830,6 +830,7 @@ export interface ApiEventsPageEventsPage extends Struct.SingleTypeSchema {
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    viewBrochureLabel: Schema.Attribute.String;
     watchRecordingLabel: Schema.Attribute.String;
   };
 }
