@@ -136,3 +136,4 @@ build
 *.tar.gz.enc
 migration/
 !staging-data-2026-10-27.db
+!staging-data.tar
