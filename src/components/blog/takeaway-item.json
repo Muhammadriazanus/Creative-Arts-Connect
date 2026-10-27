@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_blog_takeaway_items",
+  "info": {
+    "displayName": "Takeaway item",
+    "icon": "check"
+  },
+  "options": {},
+  "attributes": {
+    "text": {
+      "type": "string"
+    }
+  }
+}

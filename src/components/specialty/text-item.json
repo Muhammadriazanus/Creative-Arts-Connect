@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_specialty_text_items",
+  "info": {
+    "displayName": "Text Item",
+    "icon": "align-left",
+    "description": "A single line of text used in repeatable lists"
+  },
+  "options": {},
+  "attributes": {
+    "text": {
+      "type": "text",
+      "required": true
+    }
+  }
+}

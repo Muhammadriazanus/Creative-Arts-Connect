@@ -1,0 +1,134 @@
+{
+  "kind": "collectionType",
+  "collectionName": "events",
+  "info": {
+    "singularName": "event",
+    "pluralName": "events",
+    "displayName": "Event"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "title",
+      "required": true
+    },
+    "category": {
+      "type": "enumeration",
+      "enum": [
+        "conference",
+        "workshop",
+        "webinar"
+      ],
+      "required": true
+    },
+    "startDate": {
+      "type": "datetime",
+      "required": true
+    },
+    "endDate": {
+      "type": "datetime"
+    },
+    "timezone": {
+      "type": "enumeration",
+      "enum": [
+        "EST",
+        "EDT",
+        "ET",
+        "CST",
+        "CDT",
+        "CT",
+        "MST",
+        "MDT",
+        "MT",
+        "PST",
+        "PDT",
+        "PT",
+        "GMT",
+        "UTC",
+        "BST",
+        "CET",
+        "CEST",
+        "IST",
+        "PKT",
+        "SGT"
+      ],
+      "default": "EST"
+    },
+    "locationType": {
+      "type": "enumeration",
+      "enum": [
+        "virtual",
+        "in-person"
+      ],
+      "default": "virtual"
+    },
+    "locationText": {
+      "type": "string"
+    },
+    "shortDescription": {
+      "type": "text"
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "brochure": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files"
+      ]
+    },
+    "brochureTitle": {
+      "type": "string"
+    },
+    "registerUrl": {
+      "type": "string"
+    },
+    "recordingUrl": {
+      "type": "string"
+    },
+    "isFeatured": {
+      "type": "boolean",
+      "default": false
+    },
+    "hostName": {
+      "type": "string"
+    },
+    "hostPhoto": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "priceLabel": {
+      "type": "string"
+    },
+    "audience": {
+      "type": "enumeration",
+      "enum": [
+        "Parents",
+        "Adults",
+        "Therapists",
+        "General Education"
+      ]
+    },
+    "durationMinutes": {
+      "type": "integer",
+      "min": 1
+    }
+  }
+}

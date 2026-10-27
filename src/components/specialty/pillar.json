@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_specialty_pillars",
+  "info": {
+    "displayName": "Pillar",
+    "icon": "star",
+    "description": "A benefit card with a title and description"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "text",
+      "required": true
+    }
+  }
+}

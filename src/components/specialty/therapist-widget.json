@@ -1,0 +1,47 @@
+{
+  "collectionName": "components_specialty_therapist_widgets",
+  "info": {
+    "displayName": "Therapist Widget",
+    "icon": "user-friends",
+    "description": "Heading, button label and search filters for the therapist cards on a specialty page"
+  },
+  "options": {},
+  "attributes": {
+    "show": {
+      "type": "boolean",
+      "default": true
+    },
+    "heading": {
+      "type": "string"
+    },
+    "ctaLabel": {
+      "type": "string"
+    },
+    "cardCount": {
+      "type": "integer",
+      "default": 3,
+      "min": 1,
+      "max": 6
+    },
+    "issues": {
+      "type": "component",
+      "repeatable": true,
+      "component": "specialty.text-item"
+    },
+    "specializations": {
+      "type": "component",
+      "repeatable": true,
+      "component": "specialty.text-item"
+    },
+    "clientFocus": {
+      "type": "component",
+      "repeatable": true,
+      "component": "specialty.text-item"
+    },
+    "therapyTypes": {
+      "type": "component",
+      "repeatable": true,
+      "component": "specialty.text-item"
+    }
+  }
+}
