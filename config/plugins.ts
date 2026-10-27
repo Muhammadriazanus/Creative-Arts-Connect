@@ -28,7 +28,9 @@ const config = ({ env }: Core.Config.Shared.ConfigParams): Core.Config.Plugin =>
                 ...(env('AWS_ENDPOINT') ? { endpoint: env('AWS_ENDPOINT'), forcePathStyle: true } : {}),
                 params: {
                   Bucket: env('AWS_BUCKET'),
-                  ACL: env('AWS_ACL', 'public-read'),
+                  // Buckets with ACLs disabled ("Bucket owner enforced") reject any ACL, so it is only
+                  // sent when AWS_ACL is set; such buckets grant public read through a bucket policy.
+                  ...(env('AWS_ACL') ? { ACL: env('AWS_ACL') } : {}),
                 },
               },
             },
