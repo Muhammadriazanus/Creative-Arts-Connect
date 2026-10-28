@@ -25,16 +25,23 @@
       "enum": [
         "conference",
         "workshop",
-        "webinar"
+        "webinar",
+        "group",
+        "course"
       ],
       "required": true
     },
     "startDate": {
-      "type": "datetime",
-      "required": true
+      "type": "string"
     },
     "endDate": {
-      "type": "datetime"
+      "type": "string"
+    },
+    "dateText": {
+      "type": "string"
+    },
+    "timeText": {
+      "type": "string"
     },
     "timezone": {
       "type": "enumeration",
@@ -63,11 +70,7 @@
       "default": "EST"
     },
     "locationType": {
-      "type": "enumeration",
-      "enum": [
-        "virtual",
-        "in-person"
-      ],
+      "type": "string",
       "default": "virtual"
     },
     "locationText": {
@@ -129,6 +132,11 @@
     "durationMinutes": {
       "type": "integer",
       "min": 1
+    },
+    "seo": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.seo"
     }
   }
 }
