@@ -718,12 +718,13 @@ export interface ApiEventEvent extends Struct.CollectionTypeSchema {
     brochure: Schema.Attribute.Media<'images' | 'files'>;
     brochureTitle: Schema.Attribute.String;
     category: Schema.Attribute.Enumeration<
-      ['conference', 'workshop', 'webinar']
+      ['conference', 'workshop', 'webinar', 'group', 'course']
     > &
       Schema.Attribute.Required;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    dateText: Schema.Attribute.String;
     durationMinutes: Schema.Attribute.Integer &
       Schema.Attribute.SetMinMax<
         {
@@ -731,7 +732,7 @@ export interface ApiEventEvent extends Struct.CollectionTypeSchema {
         },
         number
       >;
-    endDate: Schema.Attribute.DateTime;
+    endDate: Schema.Attribute.String;
     hostName: Schema.Attribute.String;
     hostPhoto: Schema.Attribute.Media<'images'>;
     image: Schema.Attribute.Media<'images'>;
@@ -740,15 +741,17 @@ export interface ApiEventEvent extends Struct.CollectionTypeSchema {
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::event.event'> &
       Schema.Attribute.Private;
     locationText: Schema.Attribute.String;
-    locationType: Schema.Attribute.Enumeration<['virtual', 'in-person']> &
+    locationType: Schema.Attribute.String &
       Schema.Attribute.DefaultTo<'virtual'>;
     priceLabel: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
     recordingUrl: Schema.Attribute.String;
     registerUrl: Schema.Attribute.String;
+    seo: Schema.Attribute.Component<'shared.seo', false>;
     shortDescription: Schema.Attribute.Text;
     slug: Schema.Attribute.UID<'title'> & Schema.Attribute.Required;
-    startDate: Schema.Attribute.DateTime & Schema.Attribute.Required;
+    startDate: Schema.Attribute.String;
+    timeText: Schema.Attribute.String;
     timezone: Schema.Attribute.Enumeration<
       [
         'EST',
@@ -822,6 +825,7 @@ export interface ApiEventsPageEventsPage extends Struct.SingleTypeSchema {
     pastSubheading: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
     registerLabel: Schema.Attribute.String;
+    seo: Schema.Attribute.Component<'shared.seo', false>;
     tabAll: Schema.Attribute.String;
     tabConferences: Schema.Attribute.String;
     tabWebinars: Schema.Attribute.String;
