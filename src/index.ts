@@ -50,6 +50,37 @@ async function resync(knex: Knex.Transaction) {
   }
 }
 
+const SITE_SOCIAL_UID = 'api::site-social.site-social' as const;
+
+const SITE_SOCIAL_SEED = {
+  facebook: 'https://www.facebook.com/people/Creativeartsconnect/61573849441775/',
+  linkedin: 'https://www.linkedin.com/company/creative-arts-connect/about/',
+  tiktok: 'https://www.tiktok.com/@creativeartsconnect',
+  instagram: 'https://www.instagram.com/creativeartsconnect/',
+};
+
+async function ensureSiteSocial(strapi: Core.Strapi) {
+  const existing = await strapi.documents(SITE_SOCIAL_UID).findFirst();
+  if (!existing) {
+    await strapi.documents(SITE_SOCIAL_UID).create({ data: SITE_SOCIAL_SEED });
+  }
+
+  const action = `${SITE_SOCIAL_UID}.find`;
+  const alreadyPublic = await strapi.db.query('plugin::users-permissions.permission').findMany({
+    where: { action, role: { type: 'public' } },
+  });
+  if (alreadyPublic.length > 0) return;
+
+  const role = await strapi.db.query('plugin::users-permissions.role').findOne({
+    where: { type: 'public' },
+  });
+  if (!role) return;
+
+  await strapi.db.query('plugin::users-permissions.permission').create({
+    data: { action, role: role.id },
+  });
+}
+
 export default {
   register({ strapi }: { strapi: Core.Strapi }) {
     strapi.documents.use(async (context, next) => {
@@ -61,5 +92,12 @@ export default {
     });
   },
 
-  bootstrap() {},
+  async bootstrap({ strapi }: { strapi: Core.Strapi }) {
+    try {
+      await ensureSiteSocial(strapi);
+    } catch (error) {
+      strapi.log.error('Failed to ensure the Site Social entry');
+      strapi.log.error(error);
+    }
+  },
 };

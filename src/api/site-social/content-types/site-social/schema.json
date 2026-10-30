@@ -1,0 +1,27 @@
+{
+  "kind": "singleType",
+  "collectionName": "site_socials",
+  "info": {
+    "singularName": "site-social",
+    "pluralName": "site-socials",
+    "displayName": "Site Social"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "facebook": {
+      "type": "string"
+    },
+    "linkedin": {
+      "type": "string"
+    },
+    "tiktok": {
+      "type": "string"
+    },
+    "instagram": {
+      "type": "string"
+    }
+  }
+}
