@@ -34,6 +34,9 @@
     "ctaLabel": {
       "type": "string"
     },
+    "tagName": {
+      "type": "string"
+    },
     "cover": {
       "type": "media",
       "multiple": false,
