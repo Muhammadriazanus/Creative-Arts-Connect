@@ -983,6 +983,37 @@ export interface ApiModalityPageModalityPage
   };
 }
 
+export interface ApiSiteSocialSiteSocial extends Struct.SingleTypeSchema {
+  collectionName: 'site_socials';
+  info: {
+    displayName: 'Site Social';
+    pluralName: 'site-socials';
+    singularName: 'site-social';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    facebook: Schema.Attribute.String;
+    instagram: Schema.Attribute.String;
+    linkedin: Schema.Attribute.String;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::site-social.site-social'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    tiktok: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiSpecialtyPageSpecialtyPage
   extends Struct.CollectionTypeSchema {
   collectionName: 'specialty_pages';
@@ -1739,6 +1770,7 @@ declare module '@strapi/strapi' {
       'api::key-takeaway.key-takeaway': ApiKeyTakeawayKeyTakeaway;
       'api::lead-magnet.lead-magnet': ApiLeadMagnetLeadMagnet;
       'api::modality-page.modality-page': ApiModalityPageModalityPage;
+      'api::site-social.site-social': ApiSiteSocialSiteSocial;
       'api::specialty-page.specialty-page': ApiSpecialtyPageSpecialtyPage;
       'api::tag.tag': ApiTagTag;
       'api::testimonial.testimonial': ApiTestimonialTestimonial;
